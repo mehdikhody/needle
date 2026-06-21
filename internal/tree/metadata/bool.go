@@ -1,5 +1,19 @@
 package metadata
 
+import "fmt"
+
+func toBool(val string) (bool, error) {
+	switch val {
+	case "true", "1", "yes", "y", "on":
+		return true, nil
+	case "false", "0", "no", "n", "off":
+		return false, nil
+	}
+
+	err := fmt.Errorf("invalid boolean value: %q", val)
+	return false, err
+}
+
 func (m *Metadata) GetBool(key string, def ...bool) bool {
 	val := m.GetString(key)
 	if val == "" {
@@ -9,11 +23,9 @@ func (m *Metadata) GetBool(key string, def ...bool) bool {
 		return false
 	}
 
-	switch val {
-	case "true", "1", "yes", "y", "on":
-		return true
-	case "false", "0", "no", "n", "off":
-		return false
+	result, err := toBool(val)
+	if err != nil {
+		return result
 	}
 
 	if len(def) > 0 {
@@ -33,14 +45,8 @@ func (m *Metadata) GetBoolSlice(key string, def ...[]bool) []bool {
 
 	out := make([]bool, 0, len(parts))
 	for _, part := range parts {
-		switch part {
-		case "true", "1", "yes", "y", "on":
-			out = append(out, true)
-		case "false", "0", "no", "n", "off":
-			out = append(out, false)
-		default:
-			out = append(out, false)
-		}
+		result, _ := toBool(part)
+		out = append(out, result)
 	}
 
 	if len(out) == 0 {

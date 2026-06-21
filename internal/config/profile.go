@@ -6,13 +6,11 @@ import (
 )
 
 type ProfileConfig struct {
-	Name     string   `json:"name"`
 	Rotation []string `json:"rotation"`
 }
 
 func DefaultProfileConfig() *ProfileConfig {
 	cfg := &ProfileConfig{
-		Name:     "",
 		Rotation: []string{},
 	}
 
