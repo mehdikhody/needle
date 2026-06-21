@@ -9,8 +9,10 @@ type Config struct {
 	Name      string   `json:"name"`
 	Version   string   `json:"version"`
 	Expansion string   `json:"expansion"`
+	Input     string   `json:"input"`
 	Output    string   `json:"output"`
 	Debug     bool     `json:"debug"`
+	Print     bool     `json:"print"`
 	Watch     bool     `json:"watch"`
 	Encode    bool     `json:"encode"`
 	Remote    bool     `json:"remote"`
@@ -22,8 +24,10 @@ func DefaultConfig() *Config {
 		Name:      "MK",
 		Version:   "0.1",
 		Expansion: "Wrath",
+		Input:     ".",
 		Output:    "../Rotations",
 		Debug:     true,
+		Print:     false,
 		Watch:     true,
 		Encode:    false,
 		Remote:    false,

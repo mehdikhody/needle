@@ -39,7 +39,7 @@ func NewProfile(class wow.Class, path string) (*Profile, error) {
 		Filepath:  path,
 		Class:     class,
 		Rotation:  cfg.Rotation,
-		Abilities: make([]*Ability, 0),
+		Abilities: ListAbilities(filepath.Dir(path)),
 	}
 
 	return p, nil

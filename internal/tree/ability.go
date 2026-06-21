@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"needle/internal/tree/metadata"
+	"needle/internal/metadata"
 )
 
 type Ability struct {
