@@ -1,0 +1,33 @@
+{
+  "name": "Balance",
+  "rotation": [
+    "balance",
+    "core-functions",
+    "gui-begin",
+    "gui-profile",
+    "hotkey-rotation",
+    "hotkey-pause",
+    "hotkey-aoe-hold",
+    "b-hotkey-hurricane",
+    "hotkey-gui",
+    "gui-end",
+    "core-start",
+    "core-death",
+    "b-eclipse",
+    "core-combat",
+    "use-healthstone",
+    "b-barkskin",
+    "b-moonkin-form",
+    "b-remove-curse",
+    "core-target-enemy",
+    "b-innervate",
+    "b-hand",
+    "b-starfall",
+    "b-hurricane",
+    "b-faerie-fire",
+    "b-insect-swarm",
+    "b-moonfire-move",
+    "b-wrath",
+    "b-starfire"
+  ]
+}

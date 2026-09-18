@@ -1,0 +1,30 @@
+{
+  "name": "Assassination",
+  "rotation": [
+    "assassination",
+    "core-functions",
+    "gui-begin",
+    "gui-profile",
+    "hotkey-rotation",
+    "hotkey-pause",
+    "hotkey-aoe-hold",
+    "hotkey-cooldowns",
+    "hotkey-gui",
+    "gui-end",
+    "core-start",
+    "core-death",
+    "a-vanish-after",
+    "a-stealth",
+    "core-combat",
+    "use-healthstone",
+    "core-target-enemy",
+    "a-fan-of-knives",
+    "a-vanish",
+    "a-slice-and-dice",
+    "a-hunger-for-blood",
+    "a-cold-blood",
+    "a-rupture",
+    "a-envenom",
+    "a-mutilate"
+  ]
+}
