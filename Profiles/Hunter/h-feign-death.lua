@@ -1,0 +1,1 @@
+return ni.unit.buff("player", MK_FEIGN_DEATH)

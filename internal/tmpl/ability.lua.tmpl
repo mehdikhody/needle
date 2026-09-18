@@ -37,7 +37,7 @@ end
 {{ if and (ne .Ability.SpellId "") (ne .Ability.Target "") -}}
 if
     UnitExists("{{ .Ability.Target }}")
-    and IsUsableSpell({{ .Ability.SpellId }}) == 1
+    and IsUsableSpell(GetSpellInfo({{ .Ability.SpellId }})) == 1
     and ni.spell.available({{ .Ability.SpellId }})
 then
     if UnitIsUnit("player", "{{ .Ability.Target }}") or UnitIsFriend("player", "{{ .Ability.Target }}") then
@@ -59,7 +59,7 @@ then
 end
 {{ else if ne .Ability.SpellId "" -}}
 if
-    IsUsableSpell({{ .Ability.SpellId }}) == 1
+    IsUsableSpell(GetSpellInfo({{ .Ability.SpellId }})) == 1
     and ni.spell.available({{ .Ability.SpellId }})
 then
     if execute() then

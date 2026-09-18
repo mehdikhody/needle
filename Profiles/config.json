@@ -1,0 +1,13 @@
+{
+	"name": "MK",
+	"version": "10",
+	"expansion": "Wrath",
+	"input": ".",
+	"output": "H:\\Games\\Extra\\MK PQR 2\\addon\\Rotations",
+	"debug": true,
+	"print": false,
+	"watch": true,
+	"encode": false,
+	"remote": false,
+	"allow": []
+}
