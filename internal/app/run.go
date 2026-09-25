@@ -2,8 +2,11 @@ package app
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 
 	"needle/internal/bundler"
+	"needle/internal/tmpl"
 )
 
 func (a *App) Run() error {
@@ -23,5 +26,13 @@ func (a *App) Run() error {
 	}
 
 	b.Bundle()
+
+	if a.cfg.Remote {
+		path := filepath.Join(filepath.Dir(a.Filepath), "remote-macros.txt")
+		if err := os.WriteFile(path, []byte(tmpl.RemoteMacros), 0644); err != nil {
+			fmt.Printf("Failed to save remote macros: %v\n", err)
+		}
+	}
+
 	return nil
 }

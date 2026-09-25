@@ -3,6 +3,7 @@ package tree
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 type Tree struct {
@@ -11,6 +12,7 @@ type Tree struct {
 	Dirpath   string
 	Profiles  []*Profile
 	Abilities []*Ability
+	Data      []*Ability
 }
 
 func New(path string) (*Tree, error) {
@@ -29,6 +31,7 @@ func New(path string) (*Tree, error) {
 		Dirpath:   path,
 		Profiles:  ListProfiles(path),
 		Abilities: ListAbilities(path),
+		Data:      ListAbilities(filepath.Join(path, "Data")),
 	}
 
 	return p, nil

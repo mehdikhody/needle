@@ -18,7 +18,7 @@ type ProfileData struct {
 	ID        string
 	Profile   *tree.Profile
 	Config    *config.Config
-	Allow     []string
+	Data      string
 	Abilities []*ProfileAbilityData
 }
 

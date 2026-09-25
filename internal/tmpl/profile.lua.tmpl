@@ -1,11 +1,7 @@
-{{ if .Allow -}}
-local ALLOW = {
-{{- range .Allow }}
-    ["{{ . }}"] = true,
-{{- end }}
-}
-
-if not ALLOW[UnitName("player")] then
+{{ if .Data -}}
+local MK = ni.utils.require("{{ .Data }}")
+if not MK then
+    print("|cffff0000{{ .Data }} is missing|r")
     return
 end
 
@@ -27,4 +23,18 @@ local ABILITIES = {
 {{- end }}
 }
 
+{{ if .Data -}}
+local function queue()
+    if MK.Blocked and MK.Blocked() then
+        return {}
+    end
+    if MK.ALLOW and not MK.ALLOW[UnitName("player")] then
+        return {}
+    end
+    return QUEUE
+end
+
+ni.bootstrap.profile("{{ .ID }}", queue, ABILITIES)
+{{- else -}}
 ni.bootstrap.profile("{{ .ID }}", QUEUE, ABILITIES)
+{{- end }}

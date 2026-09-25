@@ -1,0 +1,86 @@
+local FILE = "{{ .File }}"
+local state = nil
+
+-- The file sits in the NI loader folder, so the state covers every character
+-- on this PC. { disabled = true } when disabled; missing means enabled.
+local function load()
+    if state == nil then
+        local ok, saved = pcall(ni.utils.getsettings, FILE)
+        state = ok and type(saved) == "table" and saved or {}
+    end
+    return state
+end
+
+local function isEnabled()
+    return not load().disabled
+end
+
+local function setEnabled(enabled)
+    local saved = load()
+    saved.disabled = not enabled or nil
+    ni.utils.savesetting(FILE, saved)
+end
+
+local function status()
+    return isEnabled() and "ON" or "OFF"
+end
+
+-- Reports whether MK was disabled remotely on this PC; hides the frame if so.
+function MK.Blocked()
+    if isEnabled() then
+        return false
+    end
+
+    if MK.FRAME and MK.FRAME.BASE then
+        MK.FRAME.BASE:Hide()
+    end
+    return true
+end
+
+local COMMANDS = {
+    MK_CHECKOUT = function()
+        return "{{ .Version }} " .. status()
+    end,
+    MK_TOGGLE = function()
+        setEnabled(not isEnabled())
+        return status()
+    end,
+    MK_ENABLE = function()
+        setEnabled(true)
+        return status()
+    end,
+    MK_DISABLE = function()
+        setEnabled(false)
+        return status()
+    end
+}
+
+local function onAddonMessage(self, event, prefix, message, channel, sender)
+    if channel ~= "WHISPER" or type(prefix) ~= "string" or not prefix:match("^MK_") then
+        return
+    end
+
+    if prefix:match("_RESPONSE$") then
+        print(tostring(sender) .. " MK: " .. tostring(message))
+        return
+    end
+
+    local command = COMMANDS[prefix]
+    if not command then
+        return
+    end
+
+    -- payload is "<guid>" or "<guid>-<anything>"
+    local guid = tostring(message):match("^([^%-]+)")
+    if guid ~= UnitGUID("player") then
+        return
+    end
+
+    SendAddonMessage(prefix .. "_RESPONSE", command(), "WHISPER", sender)
+end
+
+if not MK.REMOTE_FRAME then
+    MK.REMOTE_FRAME = CreateFrame("Frame")
+    MK.REMOTE_FRAME:RegisterEvent("CHAT_MSG_ADDON")
+    MK.REMOTE_FRAME:SetScript("OnEvent", onAddonMessage)
+end

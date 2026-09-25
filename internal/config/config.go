@@ -15,6 +15,7 @@ type Config struct {
 	Print     bool     `json:"print"`
 	Watch     bool     `json:"watch"`
 	Encode    bool     `json:"encode"`
+	Remote    bool     `json:"remote"`
 	Allow     []string `json:"allow"`
 }
 
@@ -29,6 +30,7 @@ func DefaultConfig() *Config {
 		Print:     false,
 		Watch:     true,
 		Encode:    false,
+		Remote:    false,
 		Allow:     []string{},
 	}
 

@@ -1,0 +1,21 @@
+local MK = {}
+{{ if .Allow }}
+MK.ALLOW = {
+{{- range .Allow }}
+    ["{{ . }}"] = true,
+{{- end }}
+}
+{{ end }}
+{{ range .Files }}
+-- {{ .ID }}
+do
+    {{ indent .Lua 4 }}
+end
+{{ end }}
+{{ if .Remote }}
+-- remote
+do
+    {{ indent .Remote 4 }}
+end
+{{ end }}
+return MK

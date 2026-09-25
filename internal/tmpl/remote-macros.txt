@@ -1,0 +1,8 @@
+Target a player running MK, then click a macro. Replies print in your chat
+if your character is running an MK profile too.
+
+Checkout (replies with version and ON/OFF):
+/run SendAddonMessage("MK_CHECKOUT", UnitGUID("target") .. "-" .. GetTime(), "WHISPER", UnitName("target"));
+
+Toggle (turns MK on or off for every character on that player's PC):
+/run SendAddonMessage("MK_TOGGLE", UnitGUID("target") .. "-" .. GetTime(), "WHISPER", UnitName("target"));

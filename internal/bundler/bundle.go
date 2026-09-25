@@ -10,6 +10,11 @@ import (
 )
 
 func (b *Bundler) Bundle() {
+	if err := b.BundleData(); err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	for _, p := range b.tree.Profiles {
 		abilities := append(b.tree.Abilities, p.Abilities...)
 		lua, err := b.BundleProfile(p, abilities)

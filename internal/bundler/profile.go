@@ -33,7 +33,7 @@ func (b *Bundler) BundleProfile(p *tree.Profile, abilities []*tree.Ability) (str
 		ID:        id,
 		Profile:   p,
 		Config:    b.cfg,
-		Allow:     b.allowList(),
+		Data:      b.dataID(),
 		Abilities: ad,
 	})
 
