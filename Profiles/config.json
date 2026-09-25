@@ -1,12 +1,13 @@
 {
 	"name": "MK",
-	"version": "10.5",
+	"version": "12",
 	"expansion": "Wrath",
 	"input": "H:\\Projects\\wow-needle\\Profiles",
 	"output": "G:\\Extra\\MK NI LOADER\\addon\\Rotations",
 	"debug": true,
 	"print": false,
 	"watch": true,
-	"encode": true,
+	"encode": false,
+	"remote": true,
 	"allow": []
 }
