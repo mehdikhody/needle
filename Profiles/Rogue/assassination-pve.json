@@ -1,0 +1,30 @@
+{
+  "name": "Assassination PvE",
+  "rotation": [
+    "assassination",
+    "gui-begin",
+    "gui-profile",
+    "hotkey-rotation",
+    "hotkey-pause",
+    "hotkey-aoe-hold",
+    "hotkey-cooldowns",
+    "hotkey-gui",
+    "gui-end",
+    "core-death",
+    "core-start",
+    "a-vanish-after",
+    "core-combat",
+    "use-healthstone",
+    "core-target-enemy",
+    "core-attack",
+    "a-slice-and-dice",
+    "a-hunger-for-blood",
+    "a-rupture",
+    "a-vanish",
+    "a-tricks-of-the-trade",
+    "a-fan-of-knives-pve",
+    "a-cold-blood",
+    "a-envenom-pve",
+    "a-mutilate"
+  ]
+}
