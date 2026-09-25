@@ -1,2 +1,2 @@
-ni.spell.cast(MK_BLOODTHIRST, "target")
+-- SpellId: MK_BLOODTHIRST
 return true

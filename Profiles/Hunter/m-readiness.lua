@@ -1,3 +1,4 @@
+-- SpellId: MK_READINESS
 if
     MK_COOLDOWNS
     and ni.unit.isboss("target")
@@ -6,6 +7,5 @@ if
     and ni.spell.cd(MK_EXPLOSIVE_TRAP) > 10
     and ni.spell.cd(MK_CHIMERA_SHOT) > 7
 then
-    ni.spell.cast(MK_READINESS)
     return true
 end

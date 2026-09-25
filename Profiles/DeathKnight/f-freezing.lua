@@ -1,3 +1,4 @@
+-- SpellId: MK_HOWLING_BLAST
 if
     ni.unit.buff("player", MK_FREEZING_FOG)
     and ni.unit.debuff("target", MK_FROST_FEVER, "player")
@@ -10,6 +11,5 @@ if
         and ni.spell.cd(MK_OBLITERATE) == 0
     )
 then
-    ni.spell.cast(MK_HOWLING_BLAST, "target")
     return true
 end

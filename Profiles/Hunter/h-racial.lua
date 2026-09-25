@@ -11,6 +11,7 @@ then
         and ni.spell.cd(20572) == 0
     then
         ni.spell.cast(20572)
+        return true
     end
 
     -- 26297 - Berserking
@@ -22,5 +23,6 @@ then
         and not ni.unit.buff("player", 2825)
     then
         ni.spell.cast(26297)
+        return true
     end
 end

@@ -4,4 +4,5 @@ if
     and ni.spell.valid("target", MK_BLOODTHIRST, true, true)
 then
     ni.spell.cast(MK_HEROIC_STRIKE)
+    return true
 end

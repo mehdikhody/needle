@@ -1,22 +1,22 @@
+-- SpellId: MK_FEIGN_DEATH
+local function isHalfwayThroughMark(unit)
+    local spell, _, _, _, startTime, endTime = UnitCastingInfo(unit)
+
+    if spell ~= "Mark of the Fallen Champion" then
+        return false
+    end
+
+    return GetTime() * 1000 >= (startTime + endTime) / 2
+end
+
 for i = 1, 60 do
     local unit = "nameplate" .. i
 
     if
-        UnitExists(unit)
-        and UnitExists(unit .. "target")
-        and UnitName(unit) == "Deathbringer Saurfang"
-        and ni.unit.iscasting(unit)
+        UnitName(unit) == "Deathbringer Saurfang"
         and UnitIsUnit(unit .. "target", "player")
+        and isHalfwayThroughMark(unit)
     then
-        local spell, _, _, _, startTime, endTime = UnitCastingInfo(unit)
-        local now = GetTime() * 1000
-
-        if
-            spell == "Mark of the Fallen Champion"
-            and now >= startTime + ((endTime - startTime) / 2)
-        then
-            ni.spell.cast(MK_FEIGN_DEATH)
-            return true
-        end
+        return true
     end
 end

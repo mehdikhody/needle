@@ -1,3 +1,4 @@
+-- SpellId: MK_HAUNT
 local HB = ni.unit.debuff("target", MK_HAUNT, "player")
 local hasTTL = ni.unit.ttd("target") >= 5
 
@@ -18,6 +19,5 @@ if
         and hasTTL
     )
 then
-    ni.spell.cast(MK_HAUNT, "target")
     return true
 end

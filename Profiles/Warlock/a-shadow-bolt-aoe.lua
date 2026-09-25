@@ -1,3 +1,5 @@
+-- SpellId: MK_SHADOW_BOLT
+-- Target: mouseover
 if MK_AOE and UnitExists("mouseover") then
     -- Refresh lead time scales with distance (old profile used 8/10/15/20 yard bands)
     local SBT = 5
@@ -10,7 +12,6 @@ if MK_AOE and UnitExists("mouseover") then
         ni.unit.debuff("mouseover", MK_CORRUPTION, "player")
         and ni.unit.debuffremaining("mouseover", MK_CORRUPTION, "player") <= SBT
     then
-        ni.spell.cast(MK_SHADOW_BOLT, "mouseover")
         return true
     end
 end

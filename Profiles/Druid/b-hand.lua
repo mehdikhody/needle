@@ -5,6 +5,5 @@ if
 then
     if ni.player.slotusable(10) then
         ni.player.useinventoryitem(10)
-        return true
     end
 end

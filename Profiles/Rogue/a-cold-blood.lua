@@ -1,3 +1,4 @@
+-- SpellId: MK_COLD_BLOOD
 if
     MK_COOLDOWNS
     and not MK_AOE
@@ -8,6 +9,5 @@ if
     and ni.spell.valid("target", MK_MUTILATE, true, true)
     and not ni.unit.buff("player", MK_ENVENOM)
 then
-    ni.spell.cast(MK_COLD_BLOOD)
     return true
 end

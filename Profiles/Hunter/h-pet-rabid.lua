@@ -1,3 +1,4 @@
+-- SpellId: 53401
 if
     MK_PET_CONTROL
     and UnitExists("pet")
@@ -8,6 +9,5 @@ if
     and IsPetAttackActive()
     and ni.spell.valid("target", 52474, true, true)
 then
-    ni.spell.cast(53401)
     return true
 end

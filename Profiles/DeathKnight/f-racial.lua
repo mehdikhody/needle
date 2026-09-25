@@ -11,6 +11,7 @@ then
         and ni.unit.buff("player", MK_UNBREAKABLE_ARMOR)
     then
         ni.spell.cast(20572)
+        return true
     end
 
     -- 26297 - Berserking
@@ -22,5 +23,6 @@ then
         and not ni.unit.buff("player", MK_BLOOD_LUST)
     then
         ni.spell.cast(26297)
+        return true
     end
 end

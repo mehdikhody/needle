@@ -1,3 +1,4 @@
+-- SpellId: MK_HUNTERS_MARK
 if UnitExists("target") then
     for i = 1, GetNumTrackingTypes() do
         local n, t, a, c = GetTrackingInfo(i)
@@ -20,6 +21,5 @@ if
         "Ice Sphere"
     })
 then
-    ni.spell.cast(MK_HUNTERS_MARK, "target")
     return true
 end

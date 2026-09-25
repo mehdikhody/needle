@@ -1,3 +1,4 @@
+-- SpellId: MK_TRANQUILIZING_SHOT
 if
     not MK_Include(UnitName("target"), {
         "Acidmaw",
@@ -8,6 +9,5 @@ if
         or ni.unit.buff("target", "Sara's Anger")
     )
 then
-    ni.spell.cast(MK_TRANQUILIZING_SHOT, "target")
     return true
 end

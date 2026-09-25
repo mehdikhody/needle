@@ -1,3 +1,5 @@
+-- SpellId: MK_MISDIRECTION
+-- Target: focus
 if
     MK_MD
     and UnitExists("focus")
@@ -9,6 +11,5 @@ if
     and ni.unit.isboss("target")
     and ni.spell.valid("focus", MK_MISDIRECTION, false, true)
 then
-    ni.spell.cast(MK_MISDIRECTION, "focus")
     return true
 end

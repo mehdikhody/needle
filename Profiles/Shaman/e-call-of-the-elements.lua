@@ -1,3 +1,4 @@
+-- SpellId: MK_CALL_OF_ELEMENTS
 local T1 = { GetTotemInfo(1) }
 local T2 = { GetTotemInfo(2) }
 local T3 = { GetTotemInfo(3) }
@@ -12,6 +13,5 @@ if
     and ni.unit.isboss("target")
     and ni.spell.valid("target", MK_LIGHTNING_BOLT, true, true)
 then
-    ni.spell.cast(MK_CALL_OF_ELEMENTS)
     return true
 end

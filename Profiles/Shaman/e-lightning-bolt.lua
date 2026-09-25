@@ -1,2 +1,2 @@
-ni.spell.cast(MK_LIGHTNING_BOLT, "target")
+-- SpellId: MK_LIGHTNING_BOLT
 return true

@@ -1,3 +1,4 @@
+-- SpellId: MK_RUPTURE
 if
     (
         not ni.unit.buff("player", MK_HUNGER_FOR_BLOOD)
@@ -11,6 +12,5 @@ if
     and not ni.unit.debuff("target", MK_RIP)
     and not ni.unit.debuff("target", MK_LACERATE)
 then
-    ni.spell.cast(MK_RUPTURE, "target")
     return true
 end

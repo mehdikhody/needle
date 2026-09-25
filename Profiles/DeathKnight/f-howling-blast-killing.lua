@@ -1,3 +1,4 @@
+-- SpellId: MK_HOWLING_BLAST
 if
     MK_AOE
     and ni.unit.buff("player", MK_KILLING_MACHINE)
@@ -14,7 +15,6 @@ then
         #enemies > 1
         and ni.spell.cd(MK_HOWLING_BLAST) == 0
     then
-        ni.spell.cast(MK_HOWLING_BLAST, "target")
         return true
     end
 end

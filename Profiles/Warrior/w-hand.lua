@@ -8,5 +8,4 @@ if
     and not UnitCastingInfo("player")
 then
     ni.player.useinventoryitem(10)
-    return true
 end

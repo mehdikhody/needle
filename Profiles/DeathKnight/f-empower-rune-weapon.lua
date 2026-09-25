@@ -1,3 +1,4 @@
+-- SpellId: MK_EMPOWER_RUNE_WEAPON
 if
     MK_COOLDOWNS
     and ni.unit.isboss("target")
@@ -14,6 +15,5 @@ if
         MK_GetRuneCooldown(6)
     ) > 2
 then
-    ni.spell.cast(MK_EMPOWER_RUNE_WEAPON)
     return true
 end

@@ -1,4 +1,4 @@
+-- SpellId: MK_HORN_OF_WINTER
 if not ni.unit.buff("player", MK_HORN_OF_WINTER) then
-    ni.spell.cast(MK_HORN_OF_WINTER)
+    return true
 end
-return true

@@ -1,3 +1,4 @@
+-- SpellId: MK_KILL_COMMAND
 if
     MK_PET_CONTROL
     and UnitExists("pet")

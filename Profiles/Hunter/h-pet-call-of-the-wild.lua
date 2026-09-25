@@ -1,3 +1,4 @@
+-- SpellId: MK_CALL_OF_THE_WILD
 if
     MK_COOLDOWNS
     and UnitExists("pet")
@@ -8,6 +9,5 @@ if
     and not ni.unit.buff("player", MK_CALL_OF_THE_WILD)
     and ni.spell.cd(MK_CALL_OF_THE_WILD) == 0
 then
-    ni.spell.cast(MK_CALL_OF_THE_WILD)
     return true
 end

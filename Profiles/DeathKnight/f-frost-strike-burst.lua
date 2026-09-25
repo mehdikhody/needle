@@ -1,3 +1,4 @@
+-- SpellId: MK_FROST_STRIKE
 if
     MK_COOLDOWNS
     and ni.unit.buff("player", MK_UNBREAKABLE_ARMOR)
@@ -9,6 +10,5 @@ if
     and MK_GetRuneCooldown(5) > 0
     and MK_GetRuneCooldown(6) > 0
 then
-    ni.spell.cast(MK_FROST_STRIKE, "target")
     return true
 end

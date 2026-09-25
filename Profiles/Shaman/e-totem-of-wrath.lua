@@ -1,3 +1,4 @@
+-- SpellId: MK_TOTEM_OF_WRATH
 local T1 = { GetTotemInfo(1) }
 
 if
@@ -6,6 +7,5 @@ if
     and ni.unit.isboss("target")
     and ni.spell.valid("target", MK_LIGHTNING_BOLT, true, true)
 then
-    ni.spell.cast(MK_TOTEM_OF_WRATH)
     return true
 end

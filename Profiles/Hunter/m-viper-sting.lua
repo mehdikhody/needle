@@ -1,3 +1,4 @@
+-- SpellId: MK_VIPER_STING
 if
     ni.unit.isboss("target")
     and ni.unit.power("player") <= 20
@@ -7,6 +8,5 @@ if
     and ni.spell.valid("target", MK_CHIMERA_SHOT, true, true)
     and ni.spell.cd(MK_CHIMERA_SHOT) == 0
 then
-    ni.spell.cast(MK_VIPER_STING, "target")
     return true
 end

@@ -1,3 +1,4 @@
+-- SpellId: MK_BLOOD_STRIKE
 local epidemic = { GetTalentInfo(3, 4) }
 local ffRemaining = ni.unit.debuffremaining("target", MK_FROST_FEVER, "player")
 local bpRemaining = ni.unit.debuffremaining("target", MK_BLOOD_PLAGUE, "player")
@@ -11,7 +12,6 @@ if epidemic[5] == 2 then
         and MK_GetRuneCooldown(1) <= 1 
         and MK_GetRuneCooldown(2) <= 1
     then
-        ni.spell.cast(MK_BLOOD_STRIKE, "target")
         return true
     end
 else
@@ -23,7 +23,6 @@ else
         and MK_GetRuneCooldown(1) == 0 
         and MK_GetRuneCooldown(2) == 0
     then
-        ni.spell.cast(MK_BLOOD_STRIKE, "target")
         return true
     end
 end

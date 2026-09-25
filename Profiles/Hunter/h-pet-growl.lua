@@ -1,3 +1,4 @@
+-- SpellId: 61676
 if
     MK_PET_CONTROL
     and UnitExists("pet")
@@ -9,6 +10,5 @@ if
     and UnitName("target") ~= "Aerial Command Unit"
     and ni.spell.cd(61676) == 0
 then
-    ni.spell.cast(61676, "target")
     return true
 end

@@ -1,3 +1,4 @@
+-- SpellId: MK_ELEMENTAL_MASTERY
 if
     MK_COOLDOWNS
     and ni.unit.isboss("target")
@@ -5,6 +6,5 @@ if
     and ni.spell.valid("target", MK_LIGHTNING_BOLT, true, true)
     and ni.unit.buff("player", 54758)
 then
-    ni.spell.cast(MK_ELEMENTAL_MASTERY)
     return true
 end

@@ -1,3 +1,4 @@
+-- SpellId: MK_PESTILENCE
 local epidemic = { GetTalentInfo(3, 4) }
 
 if
@@ -7,6 +8,5 @@ if
     and (GetRuneType(1) == 4) ~= (GetRuneType(2) == 4)
     and (MK_GetRuneCooldown(1) == 0) ~= (MK_GetRuneCooldown(2) == 0)
 then
-    ni.spell.cast(MK_PESTILENCE, "target")
     return true
 end

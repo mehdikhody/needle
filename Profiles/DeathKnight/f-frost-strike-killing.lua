@@ -1,3 +1,4 @@
+-- SpellId: MK_FROST_STRIKE
 if
     not MK_AOE
     and ni.unit.buff("player", MK_KILLING_MACHINE)
@@ -10,6 +11,5 @@ if
         and ni.spell.cd(MK_OBLITERATE) == 0
     )
 then
-    ni.spell.cast(MK_FROST_STRIKE, "target")
     return true
 end

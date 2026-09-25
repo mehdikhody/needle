@@ -1,3 +1,4 @@
+-- SpellId: MK_RAPID_FIRE
 if
     MK_COOLDOWNS
     and ni.unit.isboss("target")
@@ -6,6 +7,5 @@ if
     and ni.spell.valid("target", MK_MULTI_SHOT, true, true)
     and not ni.unit.buff("player", MK_RAPID_FIRE)
 then
-    ni.spell.cast(MK_RAPID_FIRE)
     return true
 end

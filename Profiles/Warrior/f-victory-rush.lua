@@ -1,2 +1,2 @@
-ni.spell.cast(MK_VICTORY_RUSH, "target")
+-- SpellId: MK_VICTORY_RUSH
 return true

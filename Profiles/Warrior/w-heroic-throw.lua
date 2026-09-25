@@ -1,2 +1,2 @@
-ni.spell.cast(MK_HEROIC_THROW, "target")
+-- SpellId: MK_HEROIC_THROW
 return true

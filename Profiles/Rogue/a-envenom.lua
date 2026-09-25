@@ -1,3 +1,4 @@
+-- SpellId: MK_ENVENOM
 if
     (
         ni.player.powerraw("combopoints") == 5
@@ -11,6 +12,5 @@ if
         and ni.player.powerraw("combopoints") >= 4
     )
 then
-    ni.spell.cast(MK_ENVENOM, "target")
     return true
 end

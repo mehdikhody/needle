@@ -1,3 +1,4 @@
+-- SpellId: MK_PESTILENCE
 local epidemic = { GetTalentInfo(3, 4) }
 local refresh_at = 4
 if epidemic[5] == 0 then 
@@ -13,6 +14,5 @@ if
         or ni.unit.debuffremaining("target", MK_BLOOD_PLAGUE, "player") <= refresh_at
     )
 then
-    ni.spell.cast(MK_PESTILENCE, "target")
     return true
 end
