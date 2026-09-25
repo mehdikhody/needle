@@ -12,10 +12,13 @@ local function execute()
             {{ else if ne .Ability.SpellId "" -}}
             ni.spell.cast({{ .Ability.SpellId }})
             {{ end -}}
+            {{ if .Config.Print -}}
+            print("|cff00ff00{{ .Ability.ID }}|r")
+            {{ end -}}
             return true
         end
     else
-        print("{{ .Ability.ID }}", output)
+        print("|cffff0000{{ .Ability.ID }} " .. tostring(output) .. "|r")
     end
 
     return false
@@ -27,6 +30,9 @@ local function execute()
         ni.spell.cast({{ .Ability.SpellId }}, "{{ .Ability.Target }}")
         {{ else if ne .Ability.SpellId "" -}}
         ni.spell.cast({{ .Ability.SpellId }})
+        {{ end -}}
+        {{ if .Config.Print -}}
+        print("|cff00ff00{{ .Ability.ID }}|r")
         {{ end -}}
         return true
     end
@@ -41,7 +47,7 @@ if
     and ni.spell.available({{ .Ability.SpellId }})
 then
     if UnitIsUnit("player", "{{ .Ability.Target }}") or UnitIsFriend("player", "{{ .Ability.Target }}") then
-        if ni.spell.valid("{{ .Ability.Target }}", {{ .Ability.SpellId }}, {{ .Ability.Facing }}, {{ .Ability.Los }}, true) then
+        if ni.spell.valid("{{ .Ability.Target }}", {{ .Ability.SpellId }}, false, {{ .Ability.Los }}, true) then
             if execute() then
                 return true
             end
