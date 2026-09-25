@@ -1,7 +1,4 @@
 -- SpellId: MK_BLOOD_TAP
-
--- Blood Tap with Ghoul Frenzy: turn a Blood rune into a Death rune when
--- Ghoul Frenzy is due and no Unholy rune is ready.
 local _, unholyReady = ni.rune.unholyrunecd()
 
 if

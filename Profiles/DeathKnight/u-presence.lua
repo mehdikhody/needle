@@ -1,5 +1,3 @@
--- Unholy Presence for Summon Gargoyle (it snapshots haste), Blood Presence
--- the rest of the time.
 local wantsUnholy = MK.GargoyleActive() or (
     MK_COOLDOWNS
     and ni.unit.isboss("target")

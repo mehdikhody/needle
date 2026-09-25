@@ -1,5 +1,3 @@
--- Ground-targeted, so cast directly at the target's position instead of
--- through SpellId.
 if
     ni.unit.inmelee("player", "target")
     and ni.spell.cd(MK_DEATH_AND_DECAY) == 0
