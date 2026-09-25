@@ -45,6 +45,19 @@ function MK.EachNameplate(fn)
     end
 end
 
+function MK.TalentRank(spellId)
+    local name = GetSpellInfo(spellId)
+    for tab = 1, GetNumTalentTabs() do
+        for index = 1, GetNumTalents(tab) do
+            local talent, _, _, _, rank = GetTalentInfo(tab, index)
+            if talent == name then
+                return rank
+            end
+        end
+    end
+    return 0
+end
+
 local HYPERSPEED_ACCELERATION = 54758
 
 -- Uses the glove tinker unless it is on cooldown or its buff is still up.
