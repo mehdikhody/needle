@@ -24,7 +24,7 @@ func (m *Metadata) GetBool(key string, def ...bool) bool {
 	}
 
 	result, err := toBool(val)
-	if err != nil {
+	if err == nil {
 		return result
 	}
 
