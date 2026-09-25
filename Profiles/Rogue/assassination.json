@@ -2,7 +2,6 @@
   "name": "Assassination",
   "rotation": [
     "assassination",
-    "core-functions",
     "gui-begin",
     "gui-profile",
     "hotkey-rotation",
@@ -11,8 +10,8 @@
     "hotkey-cooldowns",
     "hotkey-gui",
     "gui-end",
-    "core-start",
     "core-death",
+    "core-start",
     "a-vanish-after",
     "a-stealth",
     "core-combat",

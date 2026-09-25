@@ -9,9 +9,7 @@ local function isHalfwayThroughMark(unit)
     return GetTime() * 1000 >= (startTime + endTime) / 2
 end
 
-for i = 1, 60 do
-    local unit = "nameplate" .. i
-
+return MK.EachNameplate(function(unit)
     if
         UnitName(unit) == "Deathbringer Saurfang"
         and UnitIsUnit(unit .. "target", "player")
@@ -19,4 +17,4 @@ for i = 1, 60 do
     then
         return true
     end
-end
+end)

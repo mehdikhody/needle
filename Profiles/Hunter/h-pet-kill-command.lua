@@ -10,6 +10,5 @@ if
     and not ni.unit.buff("pet", MK_KILL_COMMAND_BUFF)
     and ni.spell.cd(MK_KILL_COMMAND) == 0
 then
-    ni.spell.cast(MK_KILL_COMMAND)
     return true
 end

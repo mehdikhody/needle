@@ -15,17 +15,15 @@ if MK_AOE then
         and not ni.spell.isqueued()
         and not UnitCastingInfo("player")
     then
-        for i = 1, 60 do
-            local unit = 'nameplate' .. i
+        return MK.EachNameplate(function(unit)
             if
-                UnitExists(unit)
-                and UnitCanAttack("player", unit)
+                UnitCanAttack("player", unit)
                 and not UnitIsUnit("target", unit)
                 and not UnitChannelInfo("player")
                 and ni.spell.valid(unit, MK_SHADOW_BOLT_1, true, true)
             then
                 local isBoss = ni.unit.isboss(unit)
-                -- local isElit = MK_Include(UnitName(unit), Elits)
+                -- local isElit = MK.Include(UnitName(unit), Elits)
                 local isElit = true
 
                 if isBoss or isElit then
@@ -47,6 +45,6 @@ if MK_AOE then
                     end
                 end
             end
-        end
+        end)
     end
 end

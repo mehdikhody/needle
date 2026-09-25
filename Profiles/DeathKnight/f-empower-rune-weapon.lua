@@ -7,12 +7,12 @@ if
     and GetRuneType(1) == 4
     and GetRuneType(2) == 4
     and math.min(
-        MK_GetRuneCooldown(1),
-        MK_GetRuneCooldown(2),
-        MK_GetRuneCooldown(3),
-        MK_GetRuneCooldown(4),
-        MK_GetRuneCooldown(5),
-        MK_GetRuneCooldown(6)
+        MK.GetRuneCooldown(1),
+        MK.GetRuneCooldown(2),
+        MK.GetRuneCooldown(3),
+        MK.GetRuneCooldown(4),
+        MK.GetRuneCooldown(5),
+        MK.GetRuneCooldown(6)
     ) > 2
 then
     return true

@@ -1,6 +1,6 @@
 -- SpellId: MK_TRANQUILIZING_SHOT
 if
-    not MK_Include(UnitName("target"), {
+    not MK.Include(UnitName("target"), {
         "Acidmaw",
         "Dreadscale"
     })

@@ -2,7 +2,6 @@
   "name": "Fury",
   "rotation": [
     "fury",
-    "core-functions",
     "gui-begin",
     "gui-profile",
     "hotkey-rotation",
@@ -10,8 +9,6 @@
     "hotkey-aoe",
     "hotkey-cooldowns",
     "f-hotkey-raging",
-    "hotkey-interrupt",
-    "core-interrupt",
     "hotkey-gui",
     "gui-end",
     "core-death",

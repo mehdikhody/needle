@@ -3,7 +3,7 @@ if
     and UnitExists("target")
     and UnitExists("pet")
     and not UnitIsDead("pet")
-    and MK_Include(UnitName("target"), {
+    and MK.Include(UnitName("target"), {
         "Aerial Command Unit",
         "Assault Bot",
         "Junk Bot",

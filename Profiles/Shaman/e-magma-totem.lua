@@ -1,3 +1,4 @@
+-- SpellId: MK_MAGMA_TOTEM
 local T1 = { GetTotemInfo(1) }
 
 if
@@ -7,19 +8,16 @@ if
 then
     local count = 0
 
-    for i = 1, 60 do
-        local unit = 'nameplate' .. i
-
+    MK.EachNameplate(function(unit)
         if
             not UnitIsDeadOrGhost(unit)
             and CheckInteractDistance(unit, 2)
         then
             count = count + 1
         end
-    end
+    end)
 
     if count > 2 then
-        ni.spell.cast(MK_MAGMA_TOTEM)
         return true
     end
 end

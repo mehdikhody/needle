@@ -1,10 +1,7 @@
 if ni.spell.cd(MK_KILL_SHOT) == 0 then
-    for i = 1, 60 do
-        local unit = "nameplate" .. i
-
+    return MK.EachNameplate(function(unit)
         if
-            UnitExists(unit)
-            and ni.unit.hp(unit) <= 20
+            ni.unit.hp(unit) <= 20
             and ni.unit.hpraw(unit) > 10000
             and UnitCanAttack("player", unit)
             and ni.spell.valid(unit, MK_KILL_SHOT, true, true)
@@ -14,7 +11,7 @@ if ni.spell.cd(MK_KILL_SHOT) == 0 then
                 and ni.unit.hp("target") >= 30
                 or not ni.unit.isboss("target")
             )
-            and not MK_Include(UnitName("target"), {
+            and not MK.Include(UnitName("target"), {
                 "Aerial Command Unit",
                 "Collapsing Star",
             })
@@ -22,5 +19,5 @@ if ni.spell.cd(MK_KILL_SHOT) == 0 then
             ni.spell.cast(MK_KILL_SHOT, unit)
             return true
         end
-    end
+    end)
 end

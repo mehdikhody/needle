@@ -1,11 +1,5 @@
 local SHADOW_BEACON = 64465
 
-local YOGG_SARON_TARGETS = {
-    "Yogg-Saron",
-    "Immortal Guardian",
-    "Unknown"
-}
-
 local function canSilence(unit)
     return (
         UnitChannelInfo(unit)
@@ -13,7 +7,7 @@ local function canSilence(unit)
         and ni.spell.available(MK_SILENCING_SHOT)
         and ni.spell.cd(MK_SILENCING_SHOT) == 0
         and ni.spell.valid(unit, MK_SILENCING_SHOT, true, true)
-        and MK_IsUsableSpell(MK_SILENCING_SHOT)
+        and MK.IsUsableSpell(MK_SILENCING_SHOT)
     )
 end
 
@@ -39,7 +33,7 @@ local function handleBeacon(unit)
     return false
 end
 
-if MK_Include(UnitName("target"), YOGG_SARON_TARGETS) then
+if MK.Include(UnitName("target"), MK.YOGG_TARGETS) then
     if
         UnitExists("focus")
         and UnitCanAttack("player", "focus")
@@ -48,16 +42,13 @@ if MK_Include(UnitName("target"), YOGG_SARON_TARGETS) then
             return true
         end
     else
-        for i = 1, 60 do
-            local unit = "nameplate" .. i
-
+        return MK.EachNameplate(function(unit)
             if
-                UnitExists(unit)
-                and ni.unit.buffremaining(unit, SHADOW_BEACON) <= 6
+                ni.unit.buffremaining(unit, SHADOW_BEACON) <= 6
                 and handleBeacon(unit)
             then
                 return true
             end
-        end
+        end)
     end
 end

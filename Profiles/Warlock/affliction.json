@@ -2,7 +2,6 @@
   "name": "Affliction",
   "rotation": [
     "affliction",
-    "core-functions",
     "gui-begin",
     "gui-profile",
     "hotkey-rotation",

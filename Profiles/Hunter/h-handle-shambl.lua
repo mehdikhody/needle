@@ -9,13 +9,11 @@ end
 local function getShamblings()
     local shamblings = {}
 
-    for i = 1, 60 do
-        local unit = "nameplate" .. i
-
+    MK.EachNameplate(function(unit)
         if isShambling(unit) then
             table.insert(shamblings, unit)
         end
-    end
+    end)
 
     return shamblings
 end
@@ -63,7 +61,7 @@ end
 if
     UnitExists("target")
     and ni.spell.cd(MK_TRANQUILIZING_SHOT) == 0
-    and MK_Include(UnitName("target"), {
+    and MK.Include(UnitName("target"), {
         "The Lich King",
         "Drudge Ghoul",
         "Shambling Horror"

@@ -1,39 +1,21 @@
-local IGNORED_TARGETS = {
-    "Crusher Tentacle"
-}
-
-local MIMIRON_TARGETS = {
-    "Aerial Command Unit",
-    "VX-001",
-    "Leviathan Mk II"
-}
-
--- once the pet is on one of these, it stays there until the unit dies
-local PRIORITY_PET_TARGETS = {
-    "Kinetic Bomb",
-    "Raging Spirit"
-}
-
 local AERIAL_COMMAND_UNIT_CHANNEL = 63293
 
 local function isAerialCommandUnitChanneling()
-    for i = 1, 60 do
-        local unit = "nameplate" .. i
+    return MK.EachNameplate(function(unit)
         if
             UnitName(unit) == "Aerial Command Unit"
             and select(8, UnitChannelInfo(unit)) == AERIAL_COMMAND_UNIT_CHANNEL
         then
             return true
         end
-    end
-    return false
+    end) or false
 end
 
 local function isPetOnPriorityTarget()
     return (
         UnitExists("pettarget")
         and not UnitIsDead("pettarget")
-        and MK_Include(UnitName("pettarget"), PRIORITY_PET_TARGETS)
+        and MK.Include(UnitName("pettarget"), MK.PET_PRIORITY)
     )
 end
 
@@ -43,13 +25,13 @@ local function shouldPetAttack(targetName)
         or not UnitExists("target")
         or not UnitAffectingCombat("player")
         or ni.unit.hp("pet") <= 20
-        or MK_Include(targetName, IGNORED_TARGETS)
+        or MK.Include(targetName, MK.PET_IGNORED)
     then
         return false
     end
 
     if
-        MK_Include(targetName, MIMIRON_TARGETS)
+        MK.Include(targetName, MK.MIMIRON_TARGETS)
         and isAerialCommandUnitChanneling()
     then
         return false
@@ -62,7 +44,7 @@ local targetName = UnitName("target")
 
 if
     not MK_ROTATION
-    or MK_Include(targetName, IGNORED_TARGETS)
+    or MK.Include(targetName, MK.PET_IGNORED)
 then
     PetStopAttack()
 end

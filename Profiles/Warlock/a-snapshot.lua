@@ -52,8 +52,7 @@ function MK_ShouldSnapshot(unit)
     return entry and points > entry.points * 1.1
 end
 
-for i = 1, 60 do
-    local unit = "nameplate" .. i
+MK.EachNameplate(function(unit)
     local guid = UnitGUID(unit)
     if not ni.unit.debuff(unit, MK_CORRUPTION, "player") then
         for j = #MK_SNAPSHOT_TARGETS, 1, -1 do
@@ -62,4 +61,4 @@ for i = 1, 60 do
             end
         end
     end
-end
+end)
