@@ -137,7 +137,7 @@ Older MK builds sit next to new ones in the class folders (`MK_v10_*`,
 
   | Class | Prefixes |
   |---|---|
-  | Death Knight | `f-` frost, `u-` unholy |
+  | Death Knight | `f-` frost, `u-` unholy, `b-` blood |
   | Warrior | `w-` shared, `f-` fury |
   | Hunter | `h-` shared, `m-` marks, `s-` survival |
   | Druid | `b-` balance |
@@ -241,6 +241,12 @@ counts the player's own mark.
   all. Goes by `GetRuneType`, not slot order.
 - `MK.PoolForDeathAndDecay()`: target in melee and DnD cooldown under 3s.
 - It keeps its own spell ID copies instead of reading profile globals.
+- **DK presence rule:** Unholy and Blood never change the presence while
+  Frost Presence is active (tanking). Summon Gargoyle casts in any presence
+  except Blood.
+- **Profiles are priority lists only.** No scripted openers or sequence
+  runners (the user rejected a Data `opener.lua`); write guide openers as
+  priority conditions.
 
 ### 4.6 Generated blocks
 - **Allow list:** `MK.ALLOW = {["Name"]=true}` (only if `allow` is set).
@@ -325,6 +331,12 @@ counts the player's own mark.
   yet.
 - **Unholy profile:** untested in game. To check: presence detection by
   buff, `castat` for DnD, Blood Tap/Ghoul Frenzy interplay.
+- **Blood profile:** untested in game. To check: Hysteria on self, Blood Boil
+  at 5+ mobs (`enemiesinrange("target", 10) >= 4`), and whether Death Coil
+  pooling for Dancing Rune Weapon wastes Runic Power.
+- **Blood spell IDs:** Heart Strike 55262, Dancing Rune Weapon 49028,
+  Hysteria 49016 and Rune Tap 48982 come from DarhangeR's PQR, since the
+  user's MK PQR files never had a Blood rotation.
 - **Key hook:** keyType values are unknown; the handler is written not to
   depend on them.
 - **`remote-macros.txt`:** should be added to `.gitignore`.
