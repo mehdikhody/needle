@@ -138,12 +138,15 @@ Older MK builds sit next to new ones in the class folders (`MK_v10_*`,
   | Class | Prefixes |
   |---|---|
   | Death Knight | `f-` frost, `u-` unholy, `b-` blood |
-  | Warrior | `w-` shared, `f-` fury |
+  | Warrior | `w-` shared, `f-` fury, `a-` arms |
   | Hunter | `h-` shared, `m-` marks, `s-` survival |
-  | Druid | `b-` balance |
-  | Rogue | `a-` assassination |
-  | Shaman | `e-` elemental |
-  | Warlock | `a-` affliction |
+  | Druid | `b-` balance, `f-` feral (cat) |
+  | Rogue | `a-` assassination (PvP `assassination.json`, PvE `assassination-pve.json`), `c-` combat |
+  | Shaman | `e-` elemental, `en-` enhancement |
+  | Warlock | `a-` affliction, `wl-` shared, `dm-` demonology, `ds-` destruction |
+  | Mage | `m-` shared (spell table `m-spells`), `fi-` fire, `fr-` frost, `ar-` arcane |
+  | Priest | `s-` shadow (`s-casting` lets Mind Flay be clipped after 2 ticks) |
+  | Paladin | `r-` retribution |
 
   Abilities in a class dir are shared by every spec of that class, so reuse
   is fine, e.g. unholy uses `f-horn-of-winter`.
@@ -181,6 +184,23 @@ use-healthstone, core-target-enemy, [core-attack], <spec abilities...>
   `u-raise-dead`) go before it.
 - `core-interrupt` and `hotkey-interrupt` were **deleted**; interrupts are
   gone.
+- **Casters:** put `core-casting` right after `core-target-enemy`. It stops
+  the queue while casting or channeling, so casts and channels aren't
+  interrupted. Shadow uses its own `s-casting` instead.
+- **Conventions carried over from the MK PQR profiles:**
+  - Racials and gloves fire on bosses with cooldowns on; racials fire only
+    while the Hyperspeed buff (54758) is up.
+  - Multi-target dotting goes through the **mouseover** (Target: mouseover,
+    `MK_AOE`, and not the same unit as the target).
+  - Cast-time spells check `GetUnitSpeed("player") == 0`, and instant
+    "while moving" variants check `> 0`.
+  - Dots use `ni.unit.ttd` to skip targets that die before the dot finishes.
+- **Spell ID sources, in order:**
+  1. the user's `MK*` PQR files
+  2. DarhangeR's PQR files
+  3. memory, marked as unverified
+  NI matches auras by **name** (`GetSpellInfo(id)`), so any ID with the right
+  name works for buff and debuff checks.
 
 ### 3.4 Current hotkeys
 | key | what | implementation |
