@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"needle/internal/protect"
 	"needle/internal/utils"
 )
 
@@ -20,6 +21,15 @@ func (b *Bundler) Bundle() {
 		if lua == "" {
 			fmt.Printf("Failed to bundle %s `%s` profile.\n", p.Class, p.ID)
 			continue
+		}
+
+		if b.cfg.Encode {
+			enc, err := protect.Protect(lua)
+			if err != nil {
+				fmt.Printf("Failed to encode %s `%s` profile: %v\n", p.Class, p.ID, err)
+				continue
+			}
+			lua = enc
 		}
 
 		ID := utils.ProfileID(b.cfg.Name, b.cfg.Version, p.ID)

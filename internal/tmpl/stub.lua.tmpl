@@ -1,0 +1,32 @@
+local {{.V.Data}}="{{.Cipher}}"
+local {{.V.State}}={{.SeedA}}+{{.SeedB}}
+local {{.V.Buf}}={}
+local {{.V.Parts}}={}
+local {{.V.Bn}}=0
+local {{.V.Hash}}=0
+for {{.V.I}}=1,#{{.V.Data}} do
+{{.V.State}}=({{.V.State}}*16807)%2147483647
+local {{.V.Ks}}={{.V.State}}%256
+local {{.V.Byte}}=(string.byte({{.V.Data}},{{.V.I}})-{{.V.Ks}}+256)%256
+{{.V.Hash}}=({{.V.Hash}}*31+{{.V.Byte}})%2147483647
+{{.V.Bn}}={{.V.Bn}}+1
+{{.V.Buf}}[{{.V.Bn}}]=string.char({{.V.Byte}})
+if {{.V.Bn}}>=1024 then
+{{.V.Parts}}[#{{.V.Parts}}+1]=table.concat({{.V.Buf}})
+{{.V.Buf}}={}
+{{.V.Bn}}=0
+end
+end
+if {{.V.Bn}}>0 then {{.V.Parts}}[#{{.V.Parts}}+1]=table.concat({{.V.Buf}}) end
+if {{.V.Hash}}~={{.Hash}} then return end
+local {{.V.Fields}}={
+{{- range .NI}}
+{{.}}=function() return ni.{{.}} end,
+{{- end}}
+}
+local {{.V.Src}}=table.concat({{.V.Parts}})
+local {{.V.Chunk}}=loadstring({{.V.Src}},"=encoded profile")
+if {{.V.Chunk}} then
+setfenv({{.V.Chunk}},getfenv(1))
+return {{.V.Chunk}}(setmetatable({},{__index=function(_,{{.V.Key}}) local {{.V.Get}}={{.V.Fields}}[{{.V.Key}}] if {{.V.Get}} then return {{.V.Get}}() end end}))
+end
