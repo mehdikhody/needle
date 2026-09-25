@@ -3,7 +3,7 @@
 if
     MK_COOLDOWNS
     and ni.unit.isboss("target")
-    and ni.unit.buff("player", MK_UNHOLY_PRESENCE)
+    and not ni.unit.buff("player", MK_BLOOD_PRESENCE)
 then
     return true
 end

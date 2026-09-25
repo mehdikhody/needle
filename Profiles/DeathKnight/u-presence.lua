@@ -8,7 +8,8 @@ local wantsUnholy = MK.GargoyleActive() or (
 local presence = wantsUnholy and MK_UNHOLY_PRESENCE or MK_BLOOD_PRESENCE
 
 if
-    not ni.unit.buff("player", presence)
+    not ni.unit.buff("player", MK_FROST_PRESENCE)
+    and not ni.unit.buff("player", presence)
     and ni.spell.available(presence)
     and MK.IsUsableSpell(presence)
 then
