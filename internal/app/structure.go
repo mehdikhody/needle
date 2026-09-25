@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -10,7 +9,7 @@ import (
 
 func (a *App) Structurize() error {
 	for _, class := range wow.Classes {
-		path := filepath.Join("./", string(class))
+		path := filepath.Join(a.cfg.Input, string(class))
 		_, err := os.Stat(path)
 		if err != nil {
 			os.MkdirAll(path, os.ModePerm)
@@ -28,7 +27,6 @@ func (a *App) Structurize() error {
 		path := filepath.Join(a.cfg.Output, string(class), a.cfg.Expansion)
 		_, err := os.Stat(path)
 		if err != nil {
-			fmt.Println(err)
 			os.MkdirAll(path, os.ModePerm)
 		}
 	}

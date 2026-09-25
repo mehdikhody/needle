@@ -12,8 +12,9 @@ import (
 )
 
 var (
-	cfgPath = "./config.json"
-	cfg     = config.DefaultConfig()
+	cfgPath   = "./config.json"
+	cfg       = config.DefaultConfig()
+	watchFlag = cfg.Watch
 )
 
 var cmd = &cobra.Command{
@@ -22,7 +23,17 @@ var cmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		a := app.New(cfgPath, cfg)
 
-		if cfg.Watch {
+		// Load before deciding so `watch` (and `input`) come from config.json.
+		if err := a.Load(); err != nil {
+			return err
+		}
+
+		watch := cfg.Watch
+		if cmd.Flags().Changed("watch") {
+			watch = watchFlag
+		}
+
+		if watch {
 			return a.Watch()
 		}
 
@@ -48,7 +59,7 @@ func main() {
 
 	cmd.Flags().SortFlags = false
 	cmd.Flags().StringVarP(&cfgPath, "config", "c", cfgPath, "config path.")
-	cmd.Flags().BoolVarP(&cfg.Watch, "watch", "w", cfg.Watch, "watch project.")
+	cmd.Flags().BoolVarP(&watchFlag, "watch", "w", watchFlag, "watch project (overrides config).")
 
 	if err := cmd.Execute(); err != nil {
 		fmt.Println(err)
