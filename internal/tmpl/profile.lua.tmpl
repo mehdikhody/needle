@@ -1,3 +1,15 @@
+{{ if .Allow -}}
+local ALLOW = {
+{{- range .Allow }}
+    ["{{ . }}"] = true,
+{{- end }}
+}
+
+if not ALLOW[UnitName("player")] then
+    return
+end
+
+{{ end -}}
 local QUEUE = {
 {{- range .Profile.Rotation }}
     "{{ . }}",
