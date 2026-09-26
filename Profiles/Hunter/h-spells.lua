@@ -15,6 +15,7 @@ MK_EYES_OF_THE_BEAST        = 1002
 MK_FEED_PET                 = 6991
 MK_KILL_COMMAND             = 34026
 MK_KILL_COMMAND_BUFF        = 58914
+MK_BESTIAL_WRATH            = 19574
 MK_MASTERS_CALL             = 53271
 MK_MEND_PET                 = 48990
 MK_REVIVE_PET               = 982
