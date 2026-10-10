@@ -12,7 +12,8 @@ MK.MIMIRON_TARGETS = {
 
 -- the pet never attacks these
 MK.PET_IGNORED = {
-    "Crusher Tentacle"
+    "Crusher Tentacle",
+    "Ice Sphere"
 }
 
 -- once the pet is on one of these, it stays there until the unit dies

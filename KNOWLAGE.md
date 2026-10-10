@@ -175,13 +175,18 @@ Older MK builds sit next to new ones in the class folders (`MK_v10_*`,
 ### 3.3 Rotation header (order matters)
 ```
 <spells>, gui-begin, gui-profile, hotkey-*..., hotkey-gui, gui-end,
-core-death, [core-pet], core-start, [pre-combat stuff], core-combat,
+core-death, [core-pet], [out-of-combat stuff], core-combat, core-start,
 use-healthstone, core-target-enemy, [core-attack], <spec abilities...>
 ```
-- **`core-death` must run before `core-start`.** Otherwise the death lockout
-  never records.
-- `core-combat` returns when out of combat, so pre-pull abilities (e.g.
-  `u-raise-dead`) go before it.
+- **`core-death` runs first.** It must come before `core-combat` and
+  `core-start`, otherwise the death lockout never records.
+- **`core-combat` comes before `core-start`** (the user's choice). It
+  returns when out of combat, so out-of-combat abilities (e.g.
+  `u-raise-dead`, buffs, weapon imbues, pet summons, `f-raging`,
+  `a-stealth`, `b-eclipse`) go right before it.
+- **Trade-off:** those out-of-combat abilities run before `core-start`, so
+  they skip its checks for paused, rotation off, mounted, dead and GCD.
+  Keep them self-guarded if that matters.
 - `core-interrupt` and `hotkey-interrupt` were **deleted**; interrupts are
   gone.
 - **Casters:** put `core-casting` right after `core-target-enemy`. It stops

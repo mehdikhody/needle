@@ -22,9 +22,11 @@ end
 local function shouldPetAttack(targetName)
     if
         not MK_ROTATION
-        or not UnitExists("target")
         or not UnitAffectingCombat("player")
         or ni.unit.hp("pet") <= 20
+        or not UnitExists("target")
+        or UnitIsDead("target")
+        or not UnitCanAttack("player", "target")
         or MK.Include(targetName, MK.PET_IGNORED)
     then
         return false
@@ -44,7 +46,7 @@ local targetName = UnitName("target")
 
 if
     not MK_ROTATION
-    or MK.Include(targetName, MK.PET_IGNORED)
+    or (MK.Include(targetName, MK.PET_IGNORED) and not isPetOnPriorityTarget())
 then
     PetStopAttack()
 end
